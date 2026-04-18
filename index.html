@@ -52,7 +52,7 @@ body {
 /* Center content */
 .center {
     position: absolute;
-    top: 20%;
+    top: 10%;
     width: 100%;
 }
 
@@ -120,12 +120,13 @@ button {
     margin: 10px;
 }
 
-/* Photo */
+/* 📸 Photo FIXED */
 #photo {
     width: 260px;
-    height: auto;
+    height: 320px;
     border-radius: 25px;
-    object-fit: cover;   
+    object-fit: cover;
+    margin: 10px 0;
 }
 
 /* Cake */
@@ -144,16 +145,13 @@ button {
         <button onclick="giveFlower()">Take Flowers 💐</button>
 
         <div id="welcomeMsg">
-            <h1 class="glow">Welcome my dear wife  ❤️</h1>
+            <h1 class="glow">Welcome my dear wife ❤️</h1>
         </div>
 
         <button onclick="showPage(1)">Enter ➡️</button>
     </div>
 
-    <!-- 👦 Ravi -->
     <div class="ravi">🧍‍♂️</div>
-
-    <!-- 💐 Flower -->
     <div class="flower" id="flower">💐</div>
 
 </div>
@@ -176,11 +174,11 @@ button {
         <p id="caption">My Ganga ❤️</p>
 
         <div>
-            <button onclick="prevPhoto()">⬅️</button>
-            <button onclick="nextPhoto()">➡️</button>
+            <button onclick="prevPhoto()">⬅️ Prev</button>
+            <button onclick="nextPhoto()">Next ➡️</button>
         </div>
 
-        <button onclick="showPage(3)">Next</button>
+        <button onclick="showPage(3)">Go to Cake 🎂</button>
     </div>
 </div>
 
@@ -203,7 +201,7 @@ function showPage(num) {
     document.getElementById('page' + num).classList.add('active');
 }
 
-/* 💐 Animation + 💕 Hearts */
+/* 💐 Flower + 💕 Hearts */
 function giveFlower() {
     document.getElementById("flower").classList.add("move");
     document.getElementById("welcomeMsg").style.display = "block";
@@ -219,14 +217,13 @@ function giveFlower() {
     }
 }
 
-/* ✨ Sparkles generator */
+/* ✨ Sparkles */
 setInterval(() => {
     let s = document.createElement("div");
     s.className = "sparkle";
     s.style.left = Math.random() * 100 + "vw";
     s.style.top = "100vh";
     document.body.appendChild(s);
-
     setTimeout(() => s.remove(), 3000);
 }, 200);
 
@@ -235,7 +232,7 @@ let images = ["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg"];
 
 let captions = [
     "My Ganga ❤️",
-    "Sweet Memories  💖",
+    "Sweet Memories 💖",
     "Sweet Jodi ❤️",
     "Together Forever 💕",
     "Maava Atte 💖"
@@ -269,4 +266,4 @@ function cutCake() {
 </script>
 
 </body>
-</html> 
+</html>
