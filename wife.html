@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Ganga Avare ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Pages */
+.page {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    color: white;
+}
+
+.active {
+    display: block;
+}
+
+/* Backgrounds */
+#start { background: linear-gradient(135deg,#ff9a9e,#fad0c4); }
+#page1 { background: linear-gradient(135deg,#ff758c,#ff7eb3); }
+#page2 { background: linear-gradient(135deg,#a18cd1,#fbc2eb); }
+#page3 { background: linear-gradient(135deg,#84fab0,#8fd3f4); }
+
+/* ✨ Sparkles */
+.sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleMove 3s linear infinite;
+}
+
+@keyframes sparkleMove {
+    0% { transform: translateY(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Center content */
+.center {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+}
+
+/* 👦 Ravi */
+.ravi {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    font-size: 160px;
+}
+
+/* 💐 Flower */
+.flower {
+    position: absolute;
+    bottom: 130px;
+    left: 130px;
+    font-size: 70px;
+    transition: all 1s ease;
+}
+
+.flower.move {
+    left: 50%;
+    bottom: 250px;
+    transform: translateX(-50%) scale(1.6);
+}
+
+/* ✨ Glow text */
+.glow {
+    font-size: 32px;
+    text-shadow: 0 0 10px white, 0 0 20px pink, 0 0 30px red;
+    animation: glowAnim 1.5s infinite alternate;
+}
+
+@keyframes glowAnim {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 25px pink, 0 0 40px red; }
+}
+
+#welcomeMsg {
+    display: none;
+    margin-top: 20px;
+}
+
+/* 💕 Hearts */
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: floatUp 3s linear forwards;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-200px); opacity: 0; }
+}
+
+/* Buttons */
+button {
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    background: white;
+    color: #ff4d6d;
+    cursor: pointer;
+    margin: 10px;
+}
+
+/* Photo */
+#photo {
+    width: 260px;
+    height: 260px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+/* Cake */
+.cake { font-size: 100px; }
+.slice { font-size: 80px; display: none; }
+
+</style>
+</head>
+
+<body>
+
+<!-- 💐 Start Page -->
+<div class="page active" id="start">
+
+    <div class="center">
+        <button onclick="giveFlower()">Take Flowers 💐</button>
+
+        <div id="welcomeMsg">
+            <h1 class="glow">Welcome my dear wife  ❤️</h1>
+        </div>
+
+        <button onclick="showPage(1)">Enter ➡️</button>
+    </div>
+
+    <!-- 👦 Ravi -->
+    <div class="ravi">🧍‍♂️</div>
+
+    <!-- 💐 Flower -->
+    <div class="flower" id="flower">💐</div>
+
+</div>
+
+<!-- Page 1 -->
+<div class="page" id="page1">
+    <div class="center">
+        <h1>🎉 Happy Birthday 🎉</h1>
+        <h2>My Dear Wife Ganga Avare ❤️</h2>
+        <button onclick="showPage(2)">Next</button>
+    </div>
+</div>
+
+<!-- Page 2 -->
+<div class="page" id="page2">
+    <div class="center">
+        <h1>📸 Our Memories</h1>
+
+        <img id="photo" src="photo1.jpg">
+        <p id="caption">My Ganga ❤️</p>
+
+        <div>
+            <button onclick="prevPhoto()">⬅️</button>
+            <button onclick="nextPhoto()">➡️</button>
+        </div>
+
+        <button onclick="showPage(3)">Next</button>
+    </div>
+</div>
+
+<!-- Page 3 -->
+<div class="page" id="page3">
+    <div class="center">
+        <h1>🎂 Cake Time 🎂</h1>
+        <div class="cake" id="cake">🎂</div>
+
+        <button onclick="cutCake()">Cut Cake</button>
+
+        <div class="slice" id="slice">🍰</div>
+        <h2 id="message"></h2>
+    </div>
+</div>
+
+<script>
+function showPage(num) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page' + num).classList.add('active');
+}
+
+/* 💐 Animation + 💕 Hearts */
+function giveFlower() {
+    document.getElementById("flower").classList.add("move");
+    document.getElementById("welcomeMsg").style.display = "block";
+
+    for (let i = 0; i < 15; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "50px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3000);
+    }
+}
+
+/* ✨ Sparkles generator */
+setInterval(() => {
+    let s = document.createElement("div");
+    s.className = "sparkle";
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.top = "100vh";
+    document.body.appendChild(s);
+
+    setTimeout(() => s.remove(), 3000);
+}, 200);
+
+/* Photos */
+let images = ["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg"];
+
+let captions = [
+    "My Ganga ❤️",
+    "Beautiful Smile 💖",
+    "Sweet Memories ❤️",
+    "Together Forever 💕",
+    "My Everything 💖"
+];
+
+let index = 0;
+
+function nextPhoto() {
+    index = (index + 1) % images.length;
+    updatePhoto();
+}
+
+function prevPhoto() {
+    index = (index - 1 + images.length) % images.length;
+    updatePhoto();
+}
+
+function updatePhoto() {
+    document.getElementById("photo").src = images[index];
+    document.getElementById("caption").innerText = captions[index];
+}
+
+/* Cake */
+function cutCake() {
+    document.getElementById("cake").style.display = "none";
+    document.getElementById("slice").style.display = "block";
+
+    document.getElementById("message").innerHTML =
+        "💖 Happy Birthday Ganga Avare 💖<br>I Love You ❤️";
+}
+</script>
+
+</body>
+</html> 
